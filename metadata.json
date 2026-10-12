@@ -1,0 +1,6 @@
+{
+  "name": "Jacobs Elétrica e Hidráulica",
+  "description": "Biosite oficial da Jacobs Elétrica e Hidráulica. Soluções que conectam energia, água e confiança em Tijuca, Rio de Janeiro.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

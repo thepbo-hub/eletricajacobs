@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --top1: #3B82F6;
+    --top2: #1747A0;
+    --bg: #050B18;
+    --red: #E11D2E;
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #050B18;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #050B18;
+    color: #FFFFFF;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  }
+}
+
+/* =========================================================================
+   BOTÕES SALTANTES E BRILHOSOS (EFEITO 3D FÍSICO COM SPRING E GLOSS SHINE)
+   ========================================================================= */
+.btn-bouncy {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, filter 0.22s ease;
+  will-change: transform, box-shadow;
+  user-select: none;
+}
+
+.btn-bouncy:hover {
+  transform: translateY(-4px) scale(1.02);
+  filter: brightness(1.08);
+}
+
+.btn-bouncy:active {
+  transform: translateY(3px) scale(0.975);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+.btn-glossy {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Reflexo de brilho contínuo/periódico que varre o botão */
+.btn-glossy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -140%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.42) 50%,
+    rgba(255, 255, 255, 0.08) 75%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  animation: glossSweep 4.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.btn-glossy:hover::before {
+  animation: glossSweepHover 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes glossSweep {
+  0%, 70% {
+    left: -140%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes glossSweepHover {
+  0% {
+    left: -140%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+/* Gotinha que se solta e cai acelerando */
+.fall {
+  position: absolute;
+  border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+  will-change: transform, opacity;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 45%), #1747A0;
+  box-shadow: 0 3px 8px rgba(23, 71, 160, 0.5);
+  pointer-events: none;
+  z-index: 40;
+}
+
+.fall.red {
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 45%), #E11D2E;
+  box-shadow: 0 3px 10px rgba(225, 29, 46, 0.6);
+}
+
+/* Ponto pulsante do selo ao vivo (ciclo de ~1.6s) */
+.dot-pulse-green {
+  background-color: #2BE07A;
+  box-shadow: 0 0 0 0 rgba(43, 224, 122, 0.6);
+  animation: pulseGreen 1.6s infinite;
+}
+
+.dot-pulse-red {
+  background-color: #E11D2E;
+  box-shadow: 0 0 0 0 rgba(225, 29, 46, 0.6);
+  animation: pulseRed 1.6s infinite;
+}
+
+@keyframes pulseGreen {
+  0% {
+    box-shadow: 0 0 0 0 rgba(43, 224, 122, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(43, 224, 122, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(43, 224, 122, 0);
+  }
+}
+
+@keyframes pulseRed {
+  0% {
+    box-shadow: 0 0 0 0 rgba(225, 29, 46, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(225, 29, 46, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(225, 29, 46, 0);
+  }
+}
+
+/* Faíscas elétricas e arcos aleatórios */
+@keyframes sparkFlash1 {
+  0%, 82%, 100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  84% {
+    opacity: 0.85;
+    transform: scale(1.1);
+  }
+  86% {
+    opacity: 0.1;
+  }
+  88% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+  92% {
+    opacity: 0;
+  }
+}
+
+@keyframes sparkFlash2 {
+  0%, 70%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  72% {
+    opacity: 0.75;
+    transform: scale(1.15);
+  }
+  74% {
+    opacity: 0.15;
+  }
+  76% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+  80% {
+    opacity: 0;
+  }
+}
+
+/* Suporte rigoroso a prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .dot-pulse-green, .dot-pulse-red {
+    animation: none !important;
+  }
+  .btn-bouncy:hover, .btn-bouncy:active {
+    transform: none !important;
+  }
+}
