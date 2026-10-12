@@ -114,7 +114,7 @@ export const ProductsCarousel: React.FC = () => {
               <div className="relative w-full h-52 sm:h-56 rounded-xl overflow-hidden bg-[#050B18] mb-3.5 group">
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={item.description}
                   className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   referrerPolicy="no-referrer"
@@ -147,11 +147,11 @@ export const ProductsCarousel: React.FC = () => {
               {/* Conteúdo textual */}
               <div className="text-left flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-wider text-white mb-1.5 leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-[#A8B0BA] font-normal leading-relaxed line-clamp-3">
+                  <h3 className="font-display text-base sm:text-lg font-bold uppercase tracking-wide text-white mb-1.5 leading-snug min-h-[2.8rem]">
                     {item.description}
+                  </h3>
+                  <p className="text-xs text-[#A8B0BA] font-normal leading-relaxed">
+                    Item certificado com garantia de fábrica e balcão técnico Jacobs.
                   </p>
                 </div>
 
